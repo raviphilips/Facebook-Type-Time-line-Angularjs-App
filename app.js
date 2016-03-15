@@ -11,7 +11,7 @@ app.factory("UpdateTimeline", function($http, $q){
 			});
 
 			return deferedobject.promise;
-	}
+	};
 });
    
 
@@ -26,7 +26,7 @@ app.factory("LoadTimeline", function($http, $q) {
 			});
 
 			return deferedobject.promise;
-	}
+	};
 });
 
 app.controller("timelineController", function ($scope, UpdateTimeline, LoadTimeline, $interval){
@@ -40,7 +40,7 @@ app.controller("timelineController", function ($scope, UpdateTimeline, LoadTimel
 			$scope.loadTimeline();
 
 		});
-	}
+	};
 
 
 	$scope.loadTimeline = function() {
@@ -48,8 +48,8 @@ app.controller("timelineController", function ($scope, UpdateTimeline, LoadTimel
 		result.then(function(output) {
 			$scope.timeline = angular.copy(output.data);
 		});
-	}
+	};
 
 	$interval($scope.loadTimeline,30000);
 
-})
+});
