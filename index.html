@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="timeline">
+<head>
+	
+	
+	<meta charset="UTF-8" />
+	
+	<title>Social Time Line App</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	
+
+	<script src="app.js"></script>
+
+
+</head>
+<body>
+
+	<div class="container" ng-controller="timelineController"  ng-init="loadTimeline();">
+		<div class="page-header">
+			<h1 id="timeline">Timeline</h1>
+		</div>
+		<ul class="timeline">
+			<li class="timeline-inverted">
+				<div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
+				<div class="timeline-panel">
+					<form name="form" role="form">
+						<div class="timeline-heading">
+							<div class="form-group">
+								<label for="title">Title</label>
+								<input type="text" class="form-control" ng-model="post.header" placeholder="Titile">
+							</div>
+						</div>
+						<div class="timeline-body">
+							<div class="form-group">
+								<label for="Text">Text</label>
+								<textarea class="form-control" placeholder="text" ng-model="post.comment" rows="5"></textarea>
+							</div>
+						</div>
+						<br />
+						<br />
+						<br />
+						<button type="button" ng-click="submitData(post);" class="btn btn-success btn-lg btn-block">send</button>
+					</form>
+				</div>
+			</li>
+
+			<li ng-repeat="tm in timeline">
+				<div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+				<div class="timeline-panel">
+					<div class="timeline-heading">
+						<h4 class="timeline-title">{{tm.header}}</h4>
+						<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>{{tm.postdate}}</small> </p>
+					</div>
+					<div class="timeline-body">
+						<p>{{tm.comment}}</p>
+					</div>
+					<hr> 
+				</div>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>
